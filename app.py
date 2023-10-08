@@ -33,7 +33,7 @@ def hello_world():
     return 'Hello, World!'
 
 
-@app.route('/users',methods = ['GET'])      # get all users
+@app.route('/get_user',methods = ['GET'])      # get all users
 @cross_origin(supports_credentials=True)
 def getAllUser():
     try:
@@ -49,7 +49,7 @@ def getAllUser():
         resp.status_code = 500
         return resp
 
-@app.route('/register',methods = ['POST'])
+@app.route('/register_user',methods = ['POST'])
 @cross_origin(supports_credentials=True)
 def register_user():
     try:
