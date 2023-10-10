@@ -56,6 +56,7 @@ def register_user():
         check_user = "SELECT  name ,phone  FROM users WHERE phone = %s AND deleted = '0'"
         cursor.execute(check_user,(data['phone']))
         user_exist = cursor.fetchone()
+        print('user_exist : ',user_exist)
         if user_exist == None:
             sql = " INSERT INTO users (name,company,jobTitle,phone,location,salary) VALUES (%s,%s,%s,%s,%s,%s)"
             cursor.execute(sql,(data['name'],data['company'],data['jobTitle'],data['phone'],data['location'],data['salary']))
