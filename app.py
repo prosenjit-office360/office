@@ -61,6 +61,7 @@ def register_user():
             cursor.execute(sql,(data['name'],data['company'],data['jobTitle'],data['phone'],data['location'],data['salary']))
             cursor.connection.commit()
             insert = cursor.fetchone()
+            print('insert',insert)
             resp = jsonify({'success': True, 'response': 'User registered SuccessFully'})
             resp.status_code = 200
             return resp
