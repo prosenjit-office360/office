@@ -1,9 +1,7 @@
 
 from flask import Flask ,request, make_response
-import json
 import pandas as pd
 import numpy as np
-import os
 from flask_cors import  CORS, cross_origin
 import pymysql
 from flask import Flask
@@ -58,7 +56,6 @@ def register_user():
         check_user = "SELECT  name ,phone  FROM users WHERE phone = %s AND deleted = '0'"
         cursor.execute(check_user,(data['phone']))
         user_exist = cursor.fetchone()
-        # print('user_exist    ------------ ',user_exist)
         if user_exist == None:
             sql = " INSERT INTO users (name,company,jobTitle,phone,location,salary) VALUES (%s,%s,%s,%s,%s,%s)"
             cursor.execute(sql,(data['name'],data['company'],data['jobTitle'],data['phone'],data['location'],data['salary']))
@@ -118,6 +115,5 @@ def delete_user():
         return resp
 
 
-
 if __name__ == '__main__':
-    app.run()
+    app.run(host ="0.0.0.0",port="6004")
